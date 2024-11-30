@@ -1,0 +1,333 @@
+:root{
+    --background: #16192B;
+    --background-lighter: #20253f;
+    --text: #dae5eb;
+    --text-dimmer: #dae5eba8;
+}
+
+body{
+    margin: 0;
+    background-color: var(--background);
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    margin: 00px 200px 0px 200px;
+    color: var(--text);
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar-start{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 20%;
+}
+.navbar-start .nav-brand{
+    text-decoration: none;
+    font-size: 1.3rem;
+    background: linear-gradient(to right, #91a1ff, var(--text));
+    background-clip: text;
+    color: transparent;
+}
+.navbar-body{
+    width: 60%;
+}
+.navbar-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+}
+#username{
+    font-size: 1.1rem;
+    color: var(--text);
+}
+.navbar-buttons .nav-button .nav-link{
+    transition: 0.4s color ease;
+    text-decoration: none;
+    color: var(--text-dimmer);
+    font-size: 1rem;
+    overflow: hidden;
+}
+.navbar-buttons .nav-button .nav-link:hover{
+    cursor: pointer;
+    color: var(--text);
+}
+.nav-button{
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-end{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.logout-button a{
+    transition: 0.4s color ease;
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgba(255, 0, 0, 0.685);
+}
+.logout-button a:hover{
+    color: red;
+}
+.register-button a{
+    transition: 0.4s color ease;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #8091f3ce;
+}
+.register-button a:hover{
+    color: #91a1ff;
+}
+
+.post-container{
+    padding: 10px;
+    border-bottom: 1px dotted white;
+}
+.post-button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.posts{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+}
+.posts .post{
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    background-color: blue;
+    box-shadow: 0px 0px 12px #323755;
+    background-color: var(--background-lighter);
+}
+.posts .post .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.posts .post .content .user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+    margin-top: 5px;
+}
+.posts .post .content .user .follow-btn button{
+    width: 76px;
+    transition: 0.4s box-shadow ease;
+    background: linear-gradient(to right top, #637bff, #91a1ff);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0px 0px 2px #637bff;
+    cursor: pointer;
+}
+.posts .post .content .user .follow-btn button:hover{
+   box-shadow: 0px 0px 12px #637bff;
+}
+.posts .post .content .user .follow-btn button p{
+    background: linear-gradient(to right top, #637bff, #91a1ff);
+}
+.posts .post .content .user .unfollow-btn button{
+    transition: 0.4s box-shadow ease;
+    background: linear-gradient(to right top, #ff6363, #ff9191);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0px 0px 2px #ff6363;
+    cursor: pointer;
+}
+.posts .post .content .user .unfollow-btn button:hover{
+   box-shadow: 0px 0px 12px #ff6363;
+}
+.posts .post .content .user .unfollow-btn button p{
+    background: linear-gradient(to right top, #ff6363, #ff9191);
+}
+.posts .post .content .user .username{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.posts .post .content .user .username .name{
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    overflow: hidden;
+}
+
+.posts .post .content .body{
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.posts .post .content .status{
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+.posts .post .content .status .likes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.posts .post .content .status .likes p{
+    margin: 0;
+}
+.posts .post .content .status .post-time p{
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.753);
+    margin: 0;
+}
+
+.form-button{
+    transition: 0.5s background-color ease, 0.5s box-shadow ease;
+    width: 150px;
+    height: 40px;
+    background-color: #6879d8;
+    border: none;
+    border-radius: 9999px;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.form-button:hover{
+    cursor: pointer;
+    background-color: #8091f3;
+    box-shadow: 0px 0px 16px #6879d8;
+}
+.form-button p{
+    margin: 0;
+    font-size: 1.2rem;
+}
+.form-button i{
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.modal{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.322);
+}
+.modal .form-modal{
+    width: 600px;
+    height: max-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -80%;
+    background-color: black;
+    background-color: var(--background);
+    border-radius: 20px;
+}
+.modal-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.title{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.title p{
+    margin: 0;
+}
+.modal-content form .form-group{
+    display: flex;
+    justify-content: center;
+}
+textarea{
+    width: 90%;
+    height: 300px;
+    max-height: 100%;
+    padding: 0;
+    font-size: 1.1rem;
+    resize: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+}
+.form-submit{
+    transition: 0.5s background-color ease, 0.5s box-shadow ease;
+    width: 130px;
+    height: 40px;
+    background-color: #6879d8;
+    border: none;
+    border-radius: 9999px;
+    color: white;
+    font-size: 1rem;
+    margin: 10px;
+}
+.form-submit:hover{
+    cursor: pointer;
+    background-color: #8091f3;
+    box-shadow: 0px 0px 16px #6879d8;
+}
+.close-form{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.close-form  i{
+    transition: 0.6s color ease;
+    width: 100%;
+    color: white;
+}
+.close-form i:hover{
+    cursor: pointer;
+    color: rgba(255, 0, 0, 0.63);
+}

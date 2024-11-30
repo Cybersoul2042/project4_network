@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <script src="https://kit.fontawesome.com/5862bcab4a.js" crossorigin="anonymous"></script>
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        {% block stylesheet %}{% endblock stylesheet %}
+    </head>
+    <body>
+        <div class="container">
+            <nav class="header">
+                <div class="navbar-start">
+                    <a class="nav-brand" href="{% url 'index' %}">Network</a>
+                </div>
+              
+                <div class="navbar-body">
+                    <ul class="navbar-buttons">
+                        <li class="nav-button">
+                            <a class="nav-link" id="all" href="{% url 'index' %}">All Posts</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-button">
+                                <a class="nav-link" id="username" href="#">{{ user.username }}</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-button">
+                                <a class="nav-link" id="following">Following</a>
+                            </li>
+                        {% else %}
+                            
+                        {% endif %}
+                    </ul>
+                </div>
+    
+                <div class="navbar-end">
+                    {% if user.is_authenticated %}
+                        <div class="logout-button">
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    {% else %}
+                        <div class="register-button">
+                            <a href="{% url 'login' %}">Login / Register</a>
+                        </div>
+                    {% endif %}
+                </div>
+              </nav>
+            
+            <div class="body">
+                {% block body %}
+                {% endblock %}
+            </div>
+
+            <div class="modal" style="display: none;">
+                <div class="form-modal">
+                    <div class="close-form">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="modal-content">
+                        <div class="title">
+                            <p>New Post</p>
+                        </div>
+                        <form id="post-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <textarea class="form-control" id="text" type="password" name="password" placeholder="What is happening ??" maxlength="1024"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-submit" type="submit" value="Post">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'network/index.js' %}"></script>
+    </body>
+</html>

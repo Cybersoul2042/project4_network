@@ -1,0 +1,36 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div class="post-container">
+        <div class="post-button">
+            <button class="form-button">
+                <p>New Post</p>
+                <i class="fa-solid fa-plus"></i>
+            </button>
+            
+        </div>
+    </div>
+    <div class="post-type" id="all-post">
+        <div class="posts-container">
+            <div class="title">
+                <p>All Posts</p>
+            </div>    
+            <div class="posts" id="posts-all">
+            </div>
+        </div>
+        
+    </div>
+    <div class="post-type" id="following-post">
+        <div class="posts-container">
+            <div class="title">
+                <p>Followings Posts</p>
+            </div>
+            <div class="posts" id="posts-following">
+
+            </div>
+        </div>
+        
+    </div>
+    
+        
+{% endblock %}
