@@ -119,6 +119,28 @@ body{
     box-shadow: 0px 0px 12px #323755;
     background-color: var(--background-lighter);
 }
+.posts-container .title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.posts-container .title p{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.posts-container .page-num{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.posts-container .page-num p{
+    font-size: 1.4rem;
+    margin: 0;
+    margin-bottom: 32px;
+    font-weight: normal;
+}
 .posts .post .content{
     display: flex;
     flex-direction: column;
@@ -135,7 +157,7 @@ body{
     margin-top: 5px;
 }
 .posts .post .content .user .follow-btn button{
-    width: 76px;
+    width: 80px;
     transition: 0.4s box-shadow ease;
     background: linear-gradient(to right top, #637bff, #91a1ff);
     color: white;
@@ -154,6 +176,7 @@ body{
     background: linear-gradient(to right top, #637bff, #91a1ff);
 }
 .posts .post .content .user .unfollow-btn button{
+    width: 80px;
     transition: 0.4s box-shadow ease;
     background: linear-gradient(to right top, #ff6363, #ff9191);
     color: white;
@@ -184,8 +207,8 @@ body{
     color: white;
     margin: 0;
     overflow: hidden;
+    text-decoration: none;
 }
-
 .posts .post .content .body{
     width: 100%;
     height: 220px;
@@ -207,6 +230,20 @@ body{
     align-items: center;
     justify-content: center;
     gap: 6px;
+    cursor: pointer;
+}
+.posts .post .content .status .likes:hover i{
+    text-shadow: 0px 0px 8px white;
+}
+.posts .post .content .status .likes i{
+    transition: 0.3s text-shadow ease;
+}
+.posts .post .content .status .edit i:hover{
+    text-shadow: 0px 0px 8px white;
+}
+.posts .post .content .status .edit i{
+    transition: 0.3s text-shadow ease;
+    cursor: pointer;
 }
 .posts .post .content .status .likes p{
     margin: 0;
@@ -216,7 +253,6 @@ body{
     color: rgba(255, 255, 255, 0.753);
     margin: 0;
 }
-
 .form-button{
     transition: 0.5s background-color ease, 0.5s box-shadow ease;
     width: 150px;
@@ -249,6 +285,213 @@ body{
 
 
 
+.profile-container .header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.295);
+    padding: 20px;
+}
+.profile-container .header .username p{
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.profile-container .header .user-details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+.profile-container .header .user-details .follow-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 130px;
+}
+.profile-container .header .user-details .follow-state{
+    text-align: center;
+    height: 44px;
+    display: grid;
+    place-content: center;
+    width: 130px;
+}
+.profile-container .header .user-details .follow-state .follow{
+    width: 90px;
+    transition: 0.4s box-shadow ease;
+    background: linear-gradient(to right top, #637bff, #91a1ff);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0px 0px 2px #637bff;
+    cursor: pointer;
+}
+.profile-container .header .user-details .follow-state .follow:hover{
+   box-shadow: 0px 0px 12px #637bff;
+}
+.profile-container .header .user-details .follow-state .follow p{
+    background: linear-gradient(to right top, #637bff, #91a1ff);
+}
+.profile-container .header .user-details .follow-state .unfollow{
+    width: 90px;
+    transition: 0.4s box-shadow ease;
+    background: linear-gradient(to right top, #ff6363, #ff9191);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0px 0px 2px #ff6363;
+    cursor: pointer;
+}
+.profile-container .header .user-details .follow-state .unfollow:hover{
+   box-shadow: 0px 0px 12px #ff6363;
+}
+.profile-container .header .user-details .follow-state .unfollow p{
+    background: linear-gradient(to right top, #ff6363, #ff9191);
+}
+.profile-container .posts-container .title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-container .posts-container .title p{
+    font-size: 1.5rem;
+    
+}
+.profile-container .posts-container .posts{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+}
+.profile-container .posts-container .posts .post{
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    background-color: blue;
+    box-shadow: 0px 0px 12px #323755;
+    background-color: var(--background-lighter);
+}
+.profile-container .posts-container .posts .post .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.profile-container .posts-container .posts .post .content .user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+    margin-top: 5px;
+}
+.profile-container .posts-container .posts .post .content .user .follow-btn button{
+    width: 80px;
+    transition: 0.4s box-shadow ease;
+    background: linear-gradient(to right top, #637bff, #91a1ff);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0px 0px 2px #637bff;
+    cursor: pointer;
+}
+.profile-container .posts-container .posts .post .content .user .follow-btn button:hover{
+   box-shadow: 0px 0px 12px #637bff;
+}
+.profile-container .posts-container .posts .post .content .user .follow-btn button p{
+    background: linear-gradient(to right top, #637bff, #91a1ff);
+}
+.profile-container .posts-container .posts .post .content .user .unfollow-btn button{
+    width: 80px;
+    transition: 0.4s box-shadow ease;
+    background: linear-gradient(to right top, #ff6363, #ff9191);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0px 0px 2px #ff6363;
+    cursor: pointer;
+}
+.profile-container .posts-container .posts .post .content .user .unfollow-btn button:hover{
+   box-shadow: 0px 0px 12px #ff6363;
+}
+.profile-container .posts-container .posts .post .content .user .unfollow-btn button p{
+    background: linear-gradient(to right top, #ff6363, #ff9191);
+}
+.profile-container .posts-container .posts .post .content .user .username{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.profile-container .posts-container .posts .post .content .user .username .name{
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    overflow: hidden;
+    text-decoration: none;
+}
+.profile-container .posts-container .posts .post .content .body{
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.profile-container .posts-container .posts .post .content .status{
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+.profile-container .posts-container .posts .post .content .status .likes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+}
+.profile-container .posts-container .posts .post .content .status .likes:hover i{
+    text-shadow: 0px 0px 8px white;
+}
+.profile-container .posts-container .posts .post .content .status .likes i{
+    transition: 0.3s text-shadow ease;
+}
+.profile-container .posts-container .posts .post .content .status .likes p{
+    margin: 0;
+}
+.profile-container .posts-container .posts .post .content .status .post-time p{
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.753);
+    margin: 0;
+}
+
+
 
 .modal{
     position: absolute;
@@ -265,9 +508,10 @@ body{
     top: 50%;
     left: 50%;
     translate: -50% -80%;
-    background-color: black;
     background-color: var(--background);
     border-radius: 20px;
+    border: 2px solid #29367e;
+    box-shadow: 0px 0px 12px #29367e;
 }
 .modal-content{
     width: 100%;
@@ -275,14 +519,14 @@ body{
     flex-direction: column;
     justify-content: space-between;
 }
-.title{
+.modal-content .title{
     text-align: center;
     font-size: 1.4rem;
     font-weight: 500;
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.title p{
+.modal-content .title p{
     margin: 0;
 }
 .modal-content form .form-group{
@@ -330,4 +574,49 @@ textarea{
 .close-form i:hover{
     cursor: pointer;
     color: rgba(255, 0, 0, 0.63);
+}
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.pagination i{
+    font-size: 1.1rem;
+}
+.pagination .pages{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 1.1rem;
+}
+.pagination .pages .page{
+    transition: 0.4s text-shadow ease, 0.4s color ease;
+    cursor: pointer;
+}
+.pagination .pages .page:hover{
+    text-shadow: 0px 0px 12px #91a1ff;
+    color: #7d91ff;
+}
+.pagination .previous i{
+    transition: 0.4s text-shadow ease, 0.4s color ease;
+    cursor: pointer;
+}
+.pagination .previous i:hover{
+    text-shadow: 0px 0px 12px #91a1ff;
+    color: #7d91ff;
+}
+.pagination .next i{
+    transition: 0.4s text-shadow ease, 0.4s color ease;
+    cursor: pointer;
+}
+.pagination .next i:hover{
+    text-shadow: 0px 0px 12px #91a1ff;
+    color: #7d91ff;
 }

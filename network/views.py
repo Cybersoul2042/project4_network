@@ -9,13 +9,23 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import QuerySet
 
 
-from .models import User, Tweet, Follower, LikedPost, FollowerTweet
+from .models import User, Tweet, Follower, LikedPost
 
 
 def index(request):
     tweets = Tweet.objects.all()
     return render(request, "network/index.html",{
         "tweets": tweets
+    })
+
+def view_profile(request, userName):
+    userAccount = User.objects.get(username = userName)
+    userFollowers = Follower.objects.filter(follows = userAccount).count()
+    userFollowings = Follower.objects.filter(user = userAccount).count()
+    return render(request, "network/profile.html", {
+        "userDets": userAccount,
+        "followers": userFollowers,
+        "followings": userFollowings
     })
 
 @csrf_exempt
@@ -25,7 +35,6 @@ def set_follower(request):
     data = json.loads(request.body)
 
     body = data.get("body", "")
-    
     follower = Follower.objects.create(user = request.user, follows = User.objects.get(username = body))
         
     return JsonResponse({"message": "User was followed succsesfully"}, status=201)
@@ -51,15 +60,72 @@ def load_posts(request, postField):
     elif postField == "following":
         following_users = Follower.objects.filter(user=request.user).values_list('follows', flat=True)
         tweets = Tweet.objects.filter(user__in=following_users)
-    elif postField.find('user'):
-        return JsonResponse({"error": "Invalid PostField."}, status=400)
-    else:
-        return JsonResponse({"error": "Invalid PostField."}, status=400)
 
     tweets = tweets.order_by("-timestamp").all()
     return JsonResponse([tweet.serialize() for tweet in tweets], safe=False)
 
+def load_likedPosts(request, postUser):
+    if(User.objects.filter(username = postUser) is not None):
+        user = User.objects.get(username = postUser)
+        likedtweets = LikedPost.objects.filter(user = user).values_list('post', flat=True)
+        tweets = Tweet.objects.filter(pk__in=likedtweets)
+    else:
+        return JsonResponse({"error": "No User of this username Found"}, status=404)
+
+    tweets = tweets.order_by("-timestamp").all()
+    return JsonResponse([tweet.serialize() for tweet in tweets], safe=False)
+
+def load_userPosts(request, userName):
+    userAccount = User.objects.get(username = userName)
+    tweets = Tweet.objects.filter(user = userAccount)
+
+    tweets = tweets.order_by("-timestamp").all()
+    return JsonResponse([tweet.serialize() for tweet in tweets], safe=False)
+
+@csrf_exempt
+def post(request, postId):
+    try:
+        tweet = Tweet.objects.get(pk = postId)
+    except Tweet.DoesNotExist:
+        return JsonResponse({"error": "Tweet not found."}, status=404)
+    
+
+    if request.method == "PUT":
+        data = json.loads(request.body)
+        if data.get('likes') is not None:
+            
+            if LikedPost.objects.filter(user = request.user,post = Tweet.objects.get(pk = postId)).first() is not None:
+                oldLikedPost = LikedPost.objects.get(user = request.user, post = Tweet.objects.get(pk = postId))
+                oldLikedPost.delete()
+                tweet.likes = data.get('likes')
+                tweet.save()
+            else:
+                newLikedPost = LikedPost.objects.create(user = request.user ,post = Tweet.objects.get(pk = postId))
+                tweet.likes = data.get('likes')
+                tweet.save()
+            
+        else:
+            tweet.body = data['tweet']
+            tweet.save()
+        return JsonResponse({'message': "Post have been liked succesefully"}, status=201)
+    
+    elif request.method == "GET":
+        return JsonResponse(tweet.serialize())
+    else:
+        return JsonResponse({
+            "error": "GET or PUT request required."
+        }, status=400)
+        
+
+@csrf_exempt
 def view_followers(request, userName):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        body = data.get("body", "")
+        follower = Follower.objects.get(user = request.user, follows = User.objects.get(username = body))
+        follower.delete()
+    
+
     followers = Follower.objects.filter(user = User.objects.get(username = userName))
 
     return JsonResponse([follower.serialize() for follower in followers], safe=False)

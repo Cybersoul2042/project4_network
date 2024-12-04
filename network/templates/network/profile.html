@@ -9,38 +9,33 @@
                 <p>New Post</p>
                 <i class="fa-solid fa-plus"></i>
             </button>
-            
         </div>
     </div>
-    <div class="post-type" id="all-post">
+    <div class="profile-container">
+        <div class="header">
+            <div class="username">
+                <p id="profile-username">{{userDets.username}}</p>
+            </div>
+            <div class="user-details">
+                <div class="follow-details">
+                    <div class="followers">{{followers}} <strong>Followers</strong></div>
+                    <div class="following">{{followings}} <strong>Followings</strong></div>
+                </div>
+            </div>
+        </div>
         <div class="posts-container">
             <div class="title">
-                <p id="name">All Posts</p>
+                <p class=".name">Uploaded Posts</p>
                 <div class="page-num">
                     <p id="title">Page:</p>
                     <p id="num">0</p>
                 </div>
             </div>    
-            <div class="posts" id="posts-all">
+            <div class="posts" id="posts-self">
             </div>
         </div>
-        
     </div>
-    <div class="post-type" id="following-post">
-        <div class="posts-container">
-            <div class="title">
-                <p id="name">Followings Posts</p>
-                <div class="page-num">
-                    <p id="title">Page:</p>
-                    <p id="num">0</p>
-                </div>
-            </div>
-            <div class="posts" id="posts-following">
 
-            </div>
-        </div>
-        
-    </div>
     <div class="pagination">
         <div class="previous">
             <i class="fa-solid fa-chevron-left left"></i>
@@ -51,9 +46,10 @@
             <i class="fa-solid fa-chevron-right right"></i>
         </div>
     </div>
+    
         
 {% endblock body %}
 
 {% block script %}
-    <script src="{% static 'network/index.js' %}"></script>
+    <script src="{% static 'network/profile.js' %}"></script>
 {% endblock script %}

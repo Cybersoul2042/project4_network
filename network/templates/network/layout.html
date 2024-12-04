@@ -22,7 +22,7 @@
                         </li>
                         {% if user.is_authenticated %}
                             <li class="nav-button">
-                                <a class="nav-link" id="username" href="#">{{ user.username }}</a>
+                                <a class="nav-link" id="username" href="{% url 'profilePage' user.username %}">{{ user.username }}</a>
                             </li>
                         {% endif %}
                         {% if user.is_authenticated %}
@@ -50,7 +50,7 @@
             
             <div class="body">
                 {% block body %}
-                {% endblock %}
+                {% endblock body %}
             </div>
 
             <div class="modal" style="display: none;">
@@ -75,6 +75,7 @@
                 </div>
             </div>
         </div>
-        <script src="{% static 'network/index.js' %}"></script>
+        {% block script %}
+        {% endblock script %}
     </body>
 </html>

@@ -13,6 +13,7 @@ class Tweet(models.Model):
 
     def serialize(self):
         return {
+            "id": self.id,
             "user": self.user.username,
             "tweet": self.body,
             "timestamp": self.timestamp.strftime("%b %d %Y, %I:%M %p"),
@@ -20,7 +21,7 @@ class Tweet(models.Model):
         }
     
 class Follower(models.Model):
-    user = models.ForeignKey(User, related_name="Follower", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="Follower", on_delete=models.CASCADE, default=None)
     follows = models.ForeignKey("User", related_name="Follows", on_delete=models.CASCADE)
 
     def serialize(self):
@@ -28,12 +29,9 @@ class Follower(models.Model):
             "user": self.user.username,
             "follows": self.follows.username
         }
-
-class FollowerTweet(models.Model):
-    pass
     
 class LikedPost(models.Model):
+    user = models.ForeignKey(User, related_name= "Post_User", on_delete=models.CASCADE)
     post = models.ForeignKey(Tweet, related_name = "Liked_Post", on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.post
+
